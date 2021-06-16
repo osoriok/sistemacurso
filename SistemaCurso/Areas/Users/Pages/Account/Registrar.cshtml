@@ -89,14 +89,22 @@
                                 </div><!--<div  class="form-group">-->
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                                    <div class="row">
+
+                                        <div class="col text-right">
+                                            <a class="btn btn-danger text-white" asp-area="Users" asp-controller="Users" asp-action="Users">Cancelar</a>
+
+                                            <button type="submit" class="btn btn-success ">Registrar</button>
+                                        </div>
+                                    </div>
+
                                 </div><!--<div  class="form-group">-->
 
-                                <div class="form-group">
-                                    <label class="text-danger">@Html.DisplayFor(m => m.Input.ErrorMessage)</label>
-                                </div><!--<div  class="form-group">-->
+                                    <div class="form-group">
+                                        <label class="text-danger">@Html.DisplayFor(m => m.Input.ErrorMessage)</label>
+                                    </div><!--<div  class="form-group">-->
 
-                            </div><!--<div  class="card-body">-->
+                                </div><!--<div  class="card-body">-->
                             <!--</div><div class="collapse show">-->
 
                         </div><!--<div class="card">-->

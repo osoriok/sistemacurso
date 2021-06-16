@@ -60,6 +60,8 @@ namespace SistemaCurso.Library
                         ID = item.iduser,
                         name = item.name,
                         lastNames = item.lastname,
+                        phoneNumber = item.phonenumber,
+
                         email = item.email,
                         role = _listRoles[0].Text,
                         Image = item.image,

@@ -328,3 +328,4 @@ C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Sis
 C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\ref\SistemaCurso.dll
 C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCurso.pdb
 C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCurso.genruntimeconfig.cache
+C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Users\Pages\Account\Details.cshtml.g.cs
