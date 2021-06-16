@@ -7498,11 +7498,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\SistemaCurso\\SistemaCurso\\SistemaCurso.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
       "projectName": "SistemaCurso",
-      "projectPath": "C:\\Users\\Usuario\\source\\repos\\SistemaCurso\\SistemaCurso\\SistemaCurso.csproj",
+      "projectPath": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\source\\repos\\SistemaCurso\\SistemaCurso\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

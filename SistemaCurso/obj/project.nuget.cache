@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qx3+L5dvyoT1cEPqhsgOQd4e1c/QBih0LVG1+ViH4s6To2ssQ2imb1xlJ6Yazd787IQomPRHFMyd33DaNdW1LQ==",
+  "dgSpecHash": "aur0UdA7L/NTiQ8NLW/GyGxKnBntziZr5do6d4q26HPOQauBHciyZkB0JDows8/eqsRRtplz0gUSzNFsYzB08g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\source\\repos\\SistemaCurso\\SistemaCurso\\SistemaCurso.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.6\\microsoft.aspnetcore.cryptography.internal.5.0.6.nupkg.sha512",
