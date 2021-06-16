@@ -55,13 +55,12 @@ namespace SistemaCurso.Library
                     var user = _context.Users.Where(u => u.Id.Equals(item.iduser)).ToList().Last();
                     userList.Add(new InputModelRegister
                     {
-                        identification = item.iduser,
+                        identification = item.nid,
                         Id = item.id,
                         ID = item.iduser,
                         name = item.name,
                         lastNames = item.lastname,
                         phoneNumber = item.phonenumber,
-
                         email = item.email,
                         role = _listRoles[0].Text,
                         Image = item.image,
