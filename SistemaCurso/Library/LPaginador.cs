@@ -8,7 +8,7 @@ namespace SistemaCurso.Library
     public class LPaginador<T>
     {
 
-        private int pagi_cuantos = 8;
+        private int pagi_cuantos = 25;
         private int pagi_nav_num_enlaces = 3;
         private int pagi_actual;
         private String pagi_nav_anterior = "&laquo; Anterior ";
@@ -22,8 +22,10 @@ namespace SistemaCurso.Library
             String action, String host)
         {
             pagi_actual = pagina == 0 ? 1 : pagina;
-            pagi_cuantos = registros > 0 ? registros : pagi_cuantos;
-
+            if (registros > 0)
+            {
+                pagi_cuantos = registros;
+            }
             int pagi_totalReg = table.Count;
             double valor1 = Math.Ceiling((double)pagi_totalReg / (double)pagi_cuantos);
             int pagi_totalPags = Convert.ToInt16(Math.Ceiling(valor1));
@@ -105,15 +107,33 @@ namespace SistemaCurso.Library
 
             }
             /* 
-            * Obtención de los registros que se mostrarán en la página actual. 
-            *------------------------------------------------------------------------ 
-            */
+       * Obtención de los registros que se mostrarán en la página actual. 
+       *------------------------------------------------------------------------ 
+       */
             // Calculamos desde qué registro se mostrará en esta página 
             // Recordemos que el conteo empieza desde CERO. 
             int pagi_inicial = (pagi_actual - 1) * pagi_cuantos;
             // Consulta SQL. Devuelve cantidad registros empezando desde pagi_inicial
 
             var query = table.Skip(pagi_inicial).Take(pagi_cuantos).ToList();
+
+
+            /* 
+        * Generación de la información sobre los registros mostrados. 
+        *------------------------------------------------------------------------ 
+        */
+
+            // Número del primer registro de la página actual 
+            int pagi_desde = pagi_inicial + 1;
+            // Número del último registro de la página actual 
+            int pagi_hasta = pagi_inicial + pagi_cuantos;
+            if (pagi_hasta > pagi_totalReg)
+            {
+                // Si estamos en la última página 
+                // El último registro de la página actual será igual al número de registros. 
+                pagi_hasta = pagi_totalReg;
+            }
+
             String pagi_info = " del <b>" + pagi_actual + "</b> al <b>" + pagi_totalPags + "</b> de <b>" +
                pagi_totalReg + "</b> <b>/" + pagi_cuantos + " </b>";
             object[] data = { pagi_info, pagi_navegacion, query };
