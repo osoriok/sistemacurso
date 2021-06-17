@@ -74,6 +74,11 @@ namespace SistemaCurso
                     areaName: "Users",
                     pattern: "{controller=Users}/{action=Users}/{id?}");
 
+                endpoints.MapAreaControllerRoute(
+                    "Principal",
+                    "Principal", 
+                    "{controller=Principal}/{action=Principal}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

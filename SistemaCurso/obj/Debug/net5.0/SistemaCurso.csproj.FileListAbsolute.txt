@@ -495,3 +495,10 @@ C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCur
 C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\ref\SistemaCurso.dll
 C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCurso.pdb
 C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCurso.genruntimeconfig.cache
+<<<<<<< HEAD
+=======
+C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\Principal\Principal.cshtml.g.cs
+C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\_ViewStart.cshtml.g.cs
+>>>>>>> e91e70e646497d12e3169ae80130784a857b14b4
+C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\Principal\Principal.cshtml.g.cs
+C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\_ViewStart.cshtml.g.cs
