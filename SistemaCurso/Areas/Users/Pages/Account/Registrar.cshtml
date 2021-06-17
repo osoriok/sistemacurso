@@ -1,7 +1,16 @@
 ﻿@page "/Usuarios/Registrar"
 @model RegistrarModel
 @{
-    var image = "/images/images/default.png";
+    var image = "";
+    if (Model.Input.Image != null)
+    {
+        image = "data:image/jpg;base64," + Convert.ToBase64String(Model.Input.Image,
+       0, Model.Input.Image.Length);
+    }
+    else
+    {
+        image = "/images/images/default.png";
+    }
 }
 <div class="container">
     <form method="post" enctype="multipart/form-data">
@@ -76,14 +85,26 @@
                                     <input asp-for="Input.email" placeholder="Correo electrónico" class="form-control">
                                     <span asp-validation-for="Input.email" class="text-danger"></span>
                                 </div><!--<div  class="form-group">-->
+                                @if (Model.Input.Id.Equals(0))
+                                {
 
-                                <div class="form-group">
-                                    <input asp-for="Input.password" placeholder="Contraseña" class="form-control">
-                                    <span asp-validation-for="Input.password" class="text-danger"></span>
-                                </div><!--<div  class="form-group">-->
+                                    <div class="form-group">
+                                        <input asp-for="Input.password" placeholder="Contraseña" class="form-control">
+                                        <span asp-validation-for="Input.password" class="text-danger"></span>
+                                    </div><!--<div  class="form-group">-->
+                                }
 
-                                <div class="form-group">
+                            <div class="form-group">
+                                @if (!Model.Input.Id.Equals(0))
+                                {
+                                    @Html.DropDownList("Input.Role", new SelectList(Model.Input.rolesLista, "Text", "Text"), new { @class = "form-control" });
+                                }
+                                else
+                                {
+
                                     @Html.DropDownList("Input.role", new SelectList(Model.Input.rolesLista, "Text", "Text"), "Seleccione un tipo", new { @class = "form-control" }) @*value = id seleccion, text= texto seleccion *@
+
+                                }
                                     <span asp-validation-for="Input.role" class="text-danger"></span>
 
                                 </div><!--<div  class="form-group">-->
@@ -100,11 +121,11 @@
 
                                 </div><!--<div  class="form-group">-->
 
-                                    <div class="form-group">
-                                        <label class="text-danger">@Html.DisplayFor(m => m.Input.ErrorMessage)</label>
-                                    </div><!--<div  class="form-group">-->
+                                <div class="form-group">
+                                    <label class="text-danger">@Html.DisplayFor(m => m.Input.ErrorMessage)</label>
+                                </div><!--<div  class="form-group">-->
 
-                                </div><!--<div  class="card-body">-->
+                            </div><!--<div  class="card-body">-->
                             <!--</div><div class="collapse show">-->
 
                         </div><!--<div class="card">-->

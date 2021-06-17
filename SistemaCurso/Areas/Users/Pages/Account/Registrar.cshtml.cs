@@ -23,7 +23,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
         private RoleManager<IdentityRole> _roleManager;
         private ApplicationDbContext _context;
         private LUsersRoles _usersRole;
-        private static InputModel _dataInput;
+        public static InputModel _dataInput;
         private Uploadimage _uploadimage;
         private static InputModelRegister _dataUser1, _dataUser2;
         private IWebHostEnvironment _environment;
@@ -115,20 +115,37 @@ namespace SistemaCurso.Areas.Users.Pages.Account
 
             if (dataUser == null)
             {
-
-                if (await SaveAsync())
+                if (_dataUser2 == null)
                 {
-                    return Redirect("/Users/Users?area=Users");//Users/Users
+                    if (await SaveAsync())
+                    {
+
+                        return Redirect("/Users/Users?area=Users");//Users/Users
+                    }
+                    else
+                    {
+                        return Redirect("/Usuarios/Registrar");
+                    }
                 }
                 else
                 {
-                    return Redirect("/Usuarios/Registrar");
+                    if (await UpdateAsync())
+                    {
+                        var url = $"/Users/Account/Details?id={_dataUser2.Id}";
+                        _dataUser2 = null;
+                        return Redirect(url);
+                    }
+                    else
+                    {
+                        return Redirect("/Usuarios/Registrar");
+                    }
                 }
+
             }
             else
             {
                 _dataUser1 = JsonConvert.DeserializeObject<InputModelRegister>(dataUser);
-                return Redirect("/Usuarios/Registrar");
+                return Redirect("/Usuarios/Registrar?id=1");
             }
 
             
@@ -269,6 +286,8 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                             name = Input.name,
                             lastname = Input.lastNames,
                             nid = Input.identification,
+                            phonenumber = Input.phoneNumber,
+
                             email = Input.email,
                             iduser = _dataUser2.ID,
                             image = imageByte,
@@ -292,6 +311,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                     }
                 }
             });
+            
             return valor;
         }
 
