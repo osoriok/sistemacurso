@@ -28,7 +28,7 @@ namespace SistemaCurso.Areas.Users.Controllers
             _user = new LUser(userManager, signInManager, roleManager, context);
         }
         
-        public IActionResult Users(int id, String filtrar)
+        public IActionResult Users(int id, String filtrar, int registros)
         {
             //if (_signInManager.IsSignedIn(User))
             //{
@@ -38,7 +38,7 @@ namespace SistemaCurso.Areas.Users.Controllers
             {
                 var url = Request.Scheme + "://" + Request.Host.Value;
                 objects = new LPaginador<InputModelRegister>().paginador(data.Result,
-                    id, 10, "Users", "Users", "Users", url);
+                    id, registros, "Users", "Users", "Users", url);
             }
             else
             {

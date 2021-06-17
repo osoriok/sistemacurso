@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Clientes\Controllers\" />
+    <Folder Include="Areas\Clientes\Models\" />
+    <Folder Include="Areas\Clientes\Views\" />
+    <Folder Include="Areas\Clientes\Pages\" />
     <Folder Include="Areas\Users\Data\" />
   </ItemGroup>
 
