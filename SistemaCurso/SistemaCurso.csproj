@@ -15,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Principal\Data\" />
+    <Folder Include="Areas\Principal\Models\" />
     <Folder Include="Areas\Users\Data\" />
   </ItemGroup>
 

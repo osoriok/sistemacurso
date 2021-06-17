@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SalesSystem.Areas.Users.Models;
 using SistemaCurso.Areas.Users.Models;
 using SistemaCurso.Data;
 using System;
@@ -71,6 +72,17 @@ namespace SistemaCurso.Library
             }
             return userList;
         }
+
+        internal async Task<SignInResult> UserLoginAsync(InputModelLogin model)
+        {
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+
+            return result;
         }
 
+
     }
+
+  
+
+}

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,113 +21,120 @@
 }
 <body>
     <div class="wrapper d-flex align-items-stretch">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <nav id="sidebar">
+                <div class="p-4 pt-5">
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(@image); "></a>
+                    <ul class="list-unstyled components mb-5">
+                        <li class="">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a asp-area="Users" asp-controller="Users" asp-action="Users">Cliente</a>
 
-        <nav id="sidebar">
-            <div class="p-4 pt-5">
-                <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(@image); "></a>
-                <ul class="list-unstyled components mb-5">
-                    <li class="">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a asp-area="Users" asp-controller="Users" asp-action="Users">Cliente</a>
+                                </li>
+                                <li>
+                                    <a href="#">Medición</a>
+                                </li>
+                                <li>
+                                    <a href="#">Pago</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lesión</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#page1Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ventas</a>
+                            <ul class="collapse list-unstyled" id="page1Submenu">
+                                <li>
+                                    <a href="#">Venta</a>
+                                </li>
+                                <li>
+                                    <a href="#">Proveedor</a>
+                                </li>
+                                <li>
+                                    <a href="#">Producto</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#page2Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Servicios</a>
+                            <ul class="collapse list-unstyled" id="page2Submenu">
+                                <li>
+                                    <a href="#">Membresía</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sesión</a>
+                                </li>
 
-                            </li>
-                            <li>
-                                <a href="#">Medición</a>
-                            </li>
-                            <li>
-                                <a href="#">Pago</a>
-                            </li>
-                            <li>
-                                <a href="#">Lesión</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#page1Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ventas</a>
-                        <ul class="collapse list-unstyled" id="page1Submenu">
-                            <li>
-                                <a href="#">Venta</a>
-                            </li>
-                            <li>
-                                <a href="#">Proveedor</a>
-                            </li>
-                            <li>
-                                <a href="#">Producto</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#page2Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Servicios</a>
-                        <ul class="collapse list-unstyled" id="page2Submenu">
-                            <li>
-                                <a href="#">Membresía</a>
-                            </li>
-                            <li>
-                                <a href="#">Sesión</a>
-                            </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#page3Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventario</a>
+                            <ul class="collapse list-unstyled" id="page3Submenu">
+                                <li>
+                                    <a href="#">Inventario</a>
+                                </li>
+                                <li>
+                                    <a href="#">Personal</a>
+                                </li>
 
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#page3Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inventario</a>
-                        <ul class="collapse list-unstyled" id="page3Submenu">
-                            <li>
-                                <a href="#">Inventario</a>
-                            </li>
-                            <li>
-                                <a href="#">Personal</a>
-                            </li>
+                            </ul>
+                        </li>
 
-                        </ul>
-                    </li>
+                    </ul>
 
-                </ul>
-
-            </div>
-        </nav>
-
-        <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                        <i class="fa fa-bars"></i> Menú
-                        <span class="sr-only">Toggle Menu</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Agenda</a>
-                            </li>
-                           
-                        </ul>
-                        <partial name="_LoginPartial" />
-                    </div>
                 </div>
             </nav>
+        }
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                                <i class="fa fa-bars"></i> Menú
+                                <span class="sr-only">Toggle Menu</span>
+                            </button>
+                            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        }
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Agenda</a>
+                                </li>
+
+                            </ul>
+                        }
+                            <partial name="_LoginPartial" />
+                        </div>
+                        </div>
+                </nav>
 
 
-            <div class="container">
-                <main role="main" class="pb-3">
-                    @RenderBody()
-                </main>
-                
-            </div>
-            <!--footer class="border-top footer text-muted">
+                <div class="container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+
+                </div>
+                <!--footer class="border-top footer text-muted">
                 <div class="container">
                     &copy; 2021 - SistemaCurso - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </div>
             </footer-->
+            </div>
+
         </div>
 
-    </div>
 
 
-   
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
