@@ -3,15 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaCurso.Areas.Users.Models;
 using SistemaCurso.Data;
 using SistemaCurso.Library;
+using System.Threading.Tasks;
 using SistemaCurso.Models;
+using SistemaCurso.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaCurso.Areas.Users.Controllers
 {
     [Area("Users")]
+    [Authorize]
     public class UsersController : Controller
     {
         private SignInManager<IdentityUser> _signInManager;
@@ -27,8 +30,14 @@ namespace SistemaCurso.Areas.Users.Controllers
             _signInManager = signInManager;
             _user = new LUser(userManager, signInManager, roleManager, context);
         }
-        
-        public IActionResult Users(int id, String filtrar, int registros)
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+        public IActionResult Users(int id, String filtrar,int registros)
         {
             //if (_signInManager.IsSignedIn(User))
             //{

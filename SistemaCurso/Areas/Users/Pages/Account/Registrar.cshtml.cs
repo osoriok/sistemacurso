@@ -119,7 +119,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                 if (_dataUser3 == null)
                 {
                     if (await SaveAsync())
-                    {
+                    {  
 
                         return Redirect("/Users/Users?area=Users");//Users/Users
                     }
