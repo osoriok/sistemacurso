@@ -7493,19 +7493,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\Jose\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
+      "projectUniqueName": "C:\\Users\\Jose\\source\\repos\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
       "projectName": "SistemaCurso",
-      "projectPath": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\source\\repos\\Git\\sistemacurso\\SistemaCurso\\obj\\",
+      "projectPath": "C:\\Users\\Jose\\source\\repos\\sistemacurso\\SistemaCurso\\SistemaCurso.csproj",
+      "packagesPath": "C:\\Users\\Jose\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jose\\source\\repos\\sistemacurso\\SistemaCurso\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7574,7 +7574,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
