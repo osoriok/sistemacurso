@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SistemaCurso.Areas.Users.Models;
 using SistemaCurso.Data;
 using SistemaCurso.Library;
@@ -24,6 +25,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
         private LUsersRoles _usersRole;
         private static InputModel _dataInput;
         private Uploadimage _uploadimage;
+        private static InputModelRegister _dataUser1, _dataUser2;
         private IWebHostEnvironment _environment;
 
 
@@ -45,25 +47,58 @@ namespace SistemaCurso.Areas.Users.Pages.Account
         }
 
 
-        public void OnGet()
+        public void OnGet(int id)
         {
-            if(_dataInput != null)
+            if (id.Equals(0))
             {
-                Input = _dataInput;
-                Input.rolesLista = _usersRole.getRoles(_roleManager);
-                Input.AvatarImage = null;
+                _dataUser2 = null;
             }
-            else
+            if (_dataInput != null || _dataUser1 != null || _dataUser2 != null)
+            {
+                if (_dataInput != null)
+                {
+                    Input = _dataInput;
+                    Input.rolesLista = _usersRole.getRoles(_roleManager);
+                    Input.AvatarImage = null;
+                }
+                else
+                {
+                    if (_dataUser1 != null || _dataUser2 != null)
+                    {
+                        if (_dataUser2 != null)
+                            _dataUser1 = _dataUser2;
+                        Input = new InputModel
+                        {
+                            Id = _dataUser1.Id,
+                            name = _dataUser1.name,
+                            lastNames = _dataUser1.lastNames,
+                            identification = _dataUser1.identification,
+                            ID = _dataUser1.identification,
+                            email = _dataUser1.email,
+                            Image = _dataUser1.Image,
+                            phoneNumber = _dataUser1.IdentityUser.PhoneNumber,
+                            rolesLista = getRoles(_dataUser1.role),
+                        };
+                        if (_dataInput != null)
+                        {
+                            Input.ErrorMessage = _dataInput.ErrorMessage;
+                        }
+                    }
+
+
+                }
+            }else
             {
                 Input = new InputModel
                 {
                     rolesLista = _usersRole.getRoles(_roleManager)
                 };
-
             }
 
-            
+            _dataUser2 = _dataUser1;
+            _dataUser1 = null;
         }
+
 
 
         [BindProperty]
@@ -75,16 +110,28 @@ namespace SistemaCurso.Areas.Users.Pages.Account
             public string ErrorMessage { get; set; }
             public List<SelectListItem> rolesLista { get; set; }
         }
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(String dataUser)
         {
-            if(await SaveAsync())
+
+            if (dataUser == null)
             {
-                return Redirect("/Users/Users?area=Users");//Users/Users
+
+                if (await SaveAsync())
+                {
+                    return Redirect("/Users/Users?area=Users");//Users/Users
+                }
+                else
+                {
+                    return Redirect("/Usuarios/Registrar");
+                }
             }
             else
             {
+                _dataUser1 = JsonConvert.DeserializeObject<InputModelRegister>(dataUser);
                 return Redirect("/Usuarios/Registrar");
             }
+
+            
         }
         private async Task<bool> SaveAsync()
         {
@@ -171,6 +218,83 @@ namespace SistemaCurso.Areas.Users.Pages.Account
 
             return valor;
         }
+
+        private List<SelectListItem> getRoles(String role)
+        {
+            List<SelectListItem> rolesLista = new List<SelectListItem>();
+            rolesLista.Add(new SelectListItem
+            {
+                Text = role
+            });
+            var roles = _usersRole.getRoles(_roleManager);
+            roles.ForEach(item => {
+                if (item.Text != role)
+                {
+                    rolesLista.Add(new SelectListItem
+                    {
+                        Text = item.Text
+                    });
+                }
+            });
+            return rolesLista;
+        }
+        private async Task<bool> UpdateAsync()
+        {
+            var valor = false;
+            byte[] imageByte = null;
+            var strategy = _context.Database.CreateExecutionStrategy();
+            await strategy.ExecuteAsync(async () => {
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var identityUser = _userManager.Users.Where(u => u.Id.Equals(_dataUser2.ID)).ToList().Last();
+                        identityUser.UserName = Input.email;
+                        identityUser.Email = Input.email;
+                        identityUser.PhoneNumber = Input.phoneNumber;
+                        _context.Update(identityUser);
+                        await _context.SaveChangesAsync();
+
+                        if (Input.AvatarImage == null)
+                        {
+                            imageByte = _dataUser2.Image;
+                        }
+                        else
+                        {
+                            imageByte = await _uploadimage.ByteAvatarImageAsync(Input.AvatarImage, _environment, "");
+                        }
+                        var t_user = new TUsers
+                        {
+                            id = _dataUser2.Id,
+                            name = Input.name,
+                            lastname = Input.lastNames,
+                            nid = Input.identification,
+                            email = Input.email,
+                            iduser = _dataUser2.ID,
+                            image = imageByte,
+                        };
+                        _context.Update(t_user);
+                        _context.SaveChanges();
+                        if (_dataUser2.role != Input.role)
+                        {
+                            await _userManager.RemoveFromRoleAsync(identityUser, _dataUser2.role);
+                            await _userManager.AddToRoleAsync(identityUser, Input.role);
+                        }
+                        transaction.Commit();
+
+                        valor = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        _dataInput.ErrorMessage = ex.Message;
+                        transaction.Rollback();
+                        valor = false;
+                    }
+                }
+            });
+            return valor;
+        }
+
     }
 }
 

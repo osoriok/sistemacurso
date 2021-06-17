@@ -26,8 +26,15 @@ using SistemaCurso.Areas.Users.Pages;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\Areas\Users\Pages\_ViewImports.cshtml"
+using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13b82ef97968a56a4de533f67cf3e21d662f41aa", @"/Areas/Users/Pages/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b88fcd1664d3f889974816c1b162a921e5c95bae", @"/Areas/Users/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7740fa27a9532bf49684dabf33c1447894e5d344", @"/Areas/Users/Pages/_ViewImports.cshtml")]
     public class Areas_Users_Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -102,8 +102,10 @@
                                 <td>
                                     <form asp-area="Users" asp-page="/Account/Registrar" method="post">
                                         @{
-                                            <!--var dataUser = JsonConvert.SerializeObject(Model.Input.DataUser);-->
+                                            var dataUser = JsonConvert.SerializeObject(Model.Input.DataUser);
                                         }
+                                        <input type="hidden" name="DataUser" value="@dataUser" />
+
 
                                         <input type="submit" value="Editar" class="btn btn-success ">
                                     </form>
