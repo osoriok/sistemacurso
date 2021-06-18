@@ -17,13 +17,10 @@
   <ItemGroup>
     <Folder Include="Areas\Principal\Data\" />
     <Folder Include="Areas\Principal\Models\" />
-<<<<<<< HEAD
     <Folder Include="Areas\Clientes\Controllers\" />
     <Folder Include="Areas\Clientes\Models\" />
     <Folder Include="Areas\Clientes\Views\" />
     <Folder Include="Areas\Clientes\Pages\" />
-=======
->>>>>>> 395cd7c9b16622e526d013e2091f9a25aa29e209
     <Folder Include="Areas\Users\Data\" />
   </ItemGroup>
 
