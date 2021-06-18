@@ -30,6 +30,8 @@ namespace SistemaCurso.Areas.Users.Controllers
             _signInManager = signInManager;
             _user = new LUser(userManager, signInManager, roleManager, context);
         }
+        
+        public IActionResult Users(int id, String filtrar, int registros)
 
         public async Task<IActionResult> Logout()
         {

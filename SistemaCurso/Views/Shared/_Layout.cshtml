@@ -32,16 +32,12 @@
                             <ul class="collapse list-unstyled" id="homeSubmenu">
                                 <li>
                                     <a asp-area="Users" asp-controller="Users" asp-action="Users">Cliente</a>
-
                                 </li>
                                 <li>
                                     <a href="#">Medición</a>
                                 </li>
                                 <li>
                                     <a href="#">Pago</a>
-                                </li>
-                                <li>
-                                    <a href="#">Lesión</a>
                                 </li>
                             </ul>
                         </li>
@@ -78,7 +74,7 @@
                                     <a href="#">Inventario</a>
                                 </li>
                                 <li>
-                                    <a href="#">Personal</a>
+                                    <a asp-area="Users" asp-controller="Users" asp-action="Users">Personal</a>
                                 </li>
 
                             </ul>
@@ -107,7 +103,7 @@
                         {
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Agenda</a>
+                                    <a class="nav-link text-dark" asp-area="Principal" asp-controller="Principal" asp-action="Principal">Agenda</a>
                                 </li>
 
                             </ul>

@@ -499,4 +499,10 @@ C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\SistemaCur
 =======
 C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\Principal\Principal.cshtml.g.cs
 C:\Users\Jose\source\repos\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\_ViewStart.cshtml.g.cs
+<<<<<<< HEAD
 >>>>>>> acc1aacff5e7a928087dd9c9c0033c37b1caa89b
+=======
+>>>>>>> e91e70e646497d12e3169ae80130784a857b14b4
+C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\Principal\Principal.cshtml.g.cs
+C:\Users\Usuario\source\repos\Git\sistemacurso\SistemaCurso\obj\Debug\net5.0\Razor\Areas\Principal\Views\_ViewStart.cshtml.g.cs
+>>>>>>> 395cd7c9b16622e526d013e2091f9a25aa29e209

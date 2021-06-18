@@ -25,7 +25,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
         private LUsersRoles _usersRole;
         public static InputModel _dataInput;
         private Uploadimage _uploadimage;
-        private static InputModelRegister _dataUser1, _dataUser2, _dataUser3;
+        private static InputModelRegister _dataUser1, _dataUser2;
         private IWebHostEnvironment _environment;
 
 
@@ -49,6 +49,8 @@ namespace SistemaCurso.Areas.Users.Pages.Account
 
         public void OnGet(int id)
         {
+            _dataUser2 = null;
+
             if (id.Equals(0))
             {
                 _dataUser2 = null;
@@ -95,8 +97,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                 };
             }
 
-            _dataUser3 = _dataUser1;
-            _dataUser2 = null;
+            _dataUser2 = _dataUser1;
             _dataUser1 = null;
         }
 
@@ -116,7 +117,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
 
             if (dataUser == null)
             {
-                if (_dataUser3 == null)
+                if (_dataUser2 == null)
                 {
                     if (await SaveAsync())
                     {  
@@ -132,8 +133,8 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                 {
                     if (await UpdateAsync())
                     {
-                        var url = $"/Users/Account/Details?id={_dataUser3.Id}";
-                        _dataUser3 = null;
+                        var url = $"/Users/Account/Details?id={_dataUser2.Id}";
+                        _dataUser2 = null;
                         return Redirect(url);
                     }
                     else
@@ -266,7 +267,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                 {
                     try
                     {
-                        var identityUser = _userManager.Users.Where(u => u.Id.Equals(_dataUser3.ID)).ToList().Last();
+                        var identityUser = _userManager.Users.Where(u => u.Id.Equals(_dataUser2.ID)).ToList().Last();
                         identityUser.UserName = Input.email;
                         identityUser.Email = Input.email;
                         identityUser.PhoneNumber = Input.phoneNumber;
@@ -275,7 +276,7 @@ namespace SistemaCurso.Areas.Users.Pages.Account
 
                         if (Input.AvatarImage == null)
                         {
-                            imageByte = _dataUser3.Image;
+                            imageByte = _dataUser2.Image;
                         }
                         else
                         {
@@ -283,21 +284,21 @@ namespace SistemaCurso.Areas.Users.Pages.Account
                         }
                         var t_user = new TUsers
                         {
-                            id = _dataUser3.Id,
+                            id = _dataUser2.Id,
                             name = Input.name,
                             lastname = Input.lastNames,
                             nid = Input.identification,
                             phonenumber = Input.phoneNumber,
 
                             email = Input.email,
-                            iduser = _dataUser3.ID,
+                            iduser = _dataUser2.ID,
                             image = imageByte,
                         };
                         _context.Update(t_user);
                         _context.SaveChanges();
-                        if (_dataUser3.role != Input.role)
+                        if (_dataUser2.role != Input.role)
                         {
-                            await _userManager.RemoveFromRoleAsync(identityUser, _dataUser3.role);
+                            await _userManager.RemoveFromRoleAsync(identityUser, _dataUser2.role);
                             await _userManager.AddToRoleAsync(identityUser, Input.role);
                         }
                         transaction.Commit();
